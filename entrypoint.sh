@@ -6,7 +6,7 @@ set -o pipefail
 
 /code/wait-for-mysql.sh
 
-mkdir /code/vendor
+mkdir -p /code/vendor
 
 python3 manage.py migrate
 python3 manage.py collectstatic --no-input --clear

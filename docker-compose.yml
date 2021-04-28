@@ -13,6 +13,7 @@ services:
       - DB_PASSWORD=${DB_PASSWORD}
       - DEBUG=${DEBUG}
       - SECRET_KEY=${SECRET_KEY}
+      - ALLOWED_HOST_1=${ALLOWED_HOST_1}
     volumes:
       - static_volume:/code/staticfiles
       - ./theme/:/code/theme
