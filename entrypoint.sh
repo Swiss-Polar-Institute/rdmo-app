@@ -6,5 +6,16 @@ set -o pipefail
 
 /code/wait-for-mysql.sh
 
+mkdir /code/vendor
+
 python3 manage.py migrate
-gunicorn --bind 0.0.0.0:8080 config.wsgi:application
+python3 manage.py collectstatic --no-input --clear
+
+gunicorn config.wsgi:application \
+	--bind 0.0.0.0:8080 \
+	--workers 3\
+	--log-file=- \
+	--error-logfile=- \
+	--access-logfile=- \
+	--capture-output \
+	"$@"
