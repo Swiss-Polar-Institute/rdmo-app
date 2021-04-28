@@ -16,7 +16,5 @@ __pycache__/
 /*.sqlite3
 /.coverage
 /htmlcov
-/themes
-/theme
 /plugins
 /.pytest_cache
