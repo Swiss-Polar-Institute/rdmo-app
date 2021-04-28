@@ -7,4 +7,4 @@ set -o pipefail
 /code/wait-for-mysql.sh
 
 python3 manage.py migrate
-python3 manage.py runserver 0.0.0.0:8080
+gunicorn --bind 0.0.0.0:8080 config.wsgi:application

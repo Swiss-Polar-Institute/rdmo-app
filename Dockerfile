@@ -34,6 +34,4 @@ COPY ./config /code/config/
 COPY ./manage.py /code/
 COPY ./tools/wait-for-mysql.sh /code/
 
-RUN pwd
-RUN ls -lR
 ENTRYPOINT ["/code/entrypoint.sh"]
