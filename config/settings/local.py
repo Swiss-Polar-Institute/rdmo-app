@@ -1,10 +1,6 @@
 import os
 from . import BASE_DIR
 
-'''
-Debug mode, don't use this in production
-'''
-
 DEBUG = os.environ['DEBUG'] == '1'
 
 
@@ -167,17 +163,17 @@ THEME_DIR = os.path.join(BASE_DIR, 'theme')
 Export Formats
 '''
 
-# from django.utils.translation import ugettext_lazy as _
-# EXPORT_FORMATS = (
-#     ('pdf', _('PDF')),
-#     ('rtf', _('Rich Text Format')),
-#     ('odt', _('Open Office')),
-#     ('docx', _('Microsoft Office')),
-#     ('html', _('HTML')),
-#     ('markdown', _('Markdown')),
-#     ('mediawiki', _('mediawiki')),
-#     ('tex', _('LaTeX'))
-# )
+from django.utils.translation import ugettext_lazy as _
+EXPORT_FORMATS = (
+    ('pdf', 'PDF'),
+    ('rtf', 'Rich Text Format'),
+    ('odt', 'Libre Office'),
+    ('docx', 'Microsoft Office'),
+    ('html', 'HTML'),
+    ('markdown', 'Markdown'),
+    ('mediawiki', 'mediawiki'),
+    ('tex', 'LaTeX')
+)
 
 '''
 Cache, see also:
