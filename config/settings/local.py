@@ -161,7 +161,7 @@ Theme, see also:
 http://rdmo.readthedocs.io/en/latest/configuration/themes.html
 '''
 
-# THEME_DIR = os.path.join(BASE_DIR, 'theme')
+THEME_DIR = os.path.join(BASE_DIR, 'theme')
 
 '''
 Export Formats
