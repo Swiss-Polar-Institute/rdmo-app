@@ -77,6 +77,9 @@ while f'ADMIN_{i}' in os.environ:
     ADMINS.append(name_email.split(','))
     i += 1
 
+# When uploading our domain we have many attributes
+DATA_UPLOAD_MAX_NUMBER_FIELDS=10000
+
 '''
 Allauth configuration, see also:
 http://rdmo.readthedocs.io/en/latest/configuration/authentication/allauth.html
