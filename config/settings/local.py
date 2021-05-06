@@ -70,6 +70,13 @@ EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
 EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
 EMAIL_USE_TLS = True
 
+ADMINS = []
+i = 1
+while f'ADMIN_{i}' in os.environ:
+    name_email = os.environ[f'ADMIN_{i}']
+    ADMINS.append(name_email.split(','))
+    i += 1
+
 '''
 Allauth configuration, see also:
 http://rdmo.readthedocs.io/en/latest/configuration/authentication/allauth.html
