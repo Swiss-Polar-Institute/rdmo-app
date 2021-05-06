@@ -22,6 +22,7 @@ services:
       - ADMIN_2=${ADMIN_2}
     volumes:
       - static_volume:/code/staticfiles
+      - media:/code/media_root
       - ./theme/:/code/theme
     expose:
       - "8080"
@@ -81,7 +82,8 @@ services:
 
 volumes:
   static_volume: {}
-  database:
+  media: {}
+  database: {}
 
 networks:
   nginx-proxy:
