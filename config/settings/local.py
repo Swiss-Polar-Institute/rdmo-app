@@ -54,7 +54,7 @@ DATABASES = {
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': '',
+#         'NAME': 'rdmo-test-database',
 #     }
 # }
 
@@ -94,6 +94,7 @@ SOCIALACCOUNT = False
 INSTALLED_APPS += [
     'allauth',
     'allauth.account',
+    'spi_translations',
 ]
 
 #     'allauth.socialaccount',
