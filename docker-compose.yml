@@ -14,8 +14,15 @@ services:
       - DEBUG=${DEBUG}
       - SECRET_KEY=${SECRET_KEY}
       - ALLOWED_HOST_1=${ALLOWED_HOST_1}
+      - FROM_EMAIL=${FROM_EMAIL}
+      - EMAIL_HOST=${EMAIL_HOST}
+      - EMAIL_HOST_USER=${EMAIL_HOST_USER}
+      - EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD}
+      - ADMIN_1=${ADMIN_1}
+      - ADMIN_2=${ADMIN_2}
     volumes:
       - static_volume:/code/staticfiles
+      - media:/code/media_root
       - ./theme/:/code/theme
     expose:
       - "8080"
@@ -75,7 +82,8 @@ services:
 
 volumes:
   static_volume: {}
-  database:
+  media: {}
+  database: {}
 
 networks:
   nginx-proxy:

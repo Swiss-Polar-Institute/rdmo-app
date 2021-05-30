@@ -70,20 +70,32 @@ EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
 EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
 EMAIL_USE_TLS = True
 
+ADMINS = []
+i = 1
+while f'ADMIN_{i}' in os.environ:
+    name_email = os.environ[f'ADMIN_{i}']
+    ADMINS.append(name_email.split(','))
+    i += 1
+
+# When uploading our domain we have many attributes
+DATA_UPLOAD_MAX_NUMBER_FIELDS=10000
+
 '''
 Allauth configuration, see also:
 http://rdmo.readthedocs.io/en/latest/configuration/authentication/allauth.html
 '''
 
-# from rdmo.core.settings import INSTALLED_APPS, AUTHENTICATION_BACKENDS
-#
-# ACCOUNT = True
-# ACCOUNT_SIGNUP = True
-# SOCIALACCOUNT = False
-#
-# INSTALLED_APPS += [
-#     'allauth',
-#     'allauth.account',
+from rdmo.core.settings import INSTALLED_APPS, AUTHENTICATION_BACKENDS
+
+ACCOUNT = True
+ACCOUNT_SIGNUP = True
+SOCIALACCOUNT = False
+
+INSTALLED_APPS += [
+    'allauth',
+    'allauth.account',
+]
+
 #     'allauth.socialaccount',
 #     'allauth.socialaccount.providers.facebook',
 #     'allauth.socialaccount.providers.github',
