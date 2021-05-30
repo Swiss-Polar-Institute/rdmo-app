@@ -23,6 +23,7 @@ services:
     volumes:
       - static_volume:/code/staticfiles
       - media:/code/media_root
+      - ./spi_translations:/code/spi_translations
       - ./theme/:/code/theme
     expose:
       - "8080"
