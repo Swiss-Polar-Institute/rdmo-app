@@ -41,22 +41,25 @@ http://rdmo.readthedocs.io/en/latest/configuration/databases.html
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ['DB_NAME'],
-        'USER': os.environ['DB_USER'],
-        'PASSWORD': os.environ['DB_PASSWORD'],
-        'HOST': os.environ['DB_HOST'],
+if os.environ.get('MYSQL_DATABASE_ENABLED', '0') == '1':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': os.environ['DB_NAME'],
+            'USER': os.environ['DB_USER'],
+            'PASSWORD': os.environ['DB_PASSWORD'],
+            'HOST': os.environ['DB_HOST'],
+        }
     }
-}
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': 'rdmo-test-database',
-#     }
-# }
+elif os.environ.get('SQLITE3_DATABASE_ENABLED', '0') == '1':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.environ['SQLITE3_FILE_NAME'],
+        }
+    }
+else:
+    assert False
 
 '''
 E-Mail configuration, see also:
