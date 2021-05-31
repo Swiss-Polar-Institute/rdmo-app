@@ -1,5 +1,5 @@
 /install
-/staticfiles/CACHE
+/staticfiles
 /venv
 
 __pycache__/
