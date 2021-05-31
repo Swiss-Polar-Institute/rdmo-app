@@ -1,0 +1,7 @@
+{% load i18n %}{% autoescape off %}Thank you for registering to use the Swiss Polar Institute's data management plan platform,
+
+{% block content %}{% endblock %}
+
+{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}For any queries or problems, please contact data@swisspolar.ch
+{% endblocktrans %}
+{% endautoescape %}

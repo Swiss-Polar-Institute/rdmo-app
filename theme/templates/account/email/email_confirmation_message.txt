@@ -1,0 +1,7 @@
+{% extends "account/email/base_message.txt" %}
+{% load account %}
+{% load i18n %}
+
+{% block content %}
+To confirm your registration, go to {{ activate_url }}
+{% endblock %}

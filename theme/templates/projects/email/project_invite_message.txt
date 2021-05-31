@@ -10,6 +10,4 @@ You are receiving this e-mail because user {{ user_full_name }} has given your e
 
 {% trans 'You will need to log in to join the project.' %} {% if not invite_user %}{% trans "If you don't have an account yet, you will be redirected accordingly." %}{% endif %}
 
-Thank you for using {{ request.get_host }}
-
 For any queries or problems, please contact data@swisspolar.ch
