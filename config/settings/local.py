@@ -1,4 +1,6 @@
 import os
+
+from spi_translations.templatetags.i18n import translate_to_spi_language
 from . import BASE_DIR
 
 DEBUG = os.environ['DEBUG'] == '1'
@@ -283,3 +285,10 @@ Logging configuration
 #         }
 #     }
 # }
+
+# Replace "Project" by "Data management plan" in the _("") strings
+# (e.g. help texts)
+# Template replacement is done via templatetags/i18n.py project file
+import django.utils.translation as translation
+
+translation.ugettext_lazy = translate_to_spi_language
