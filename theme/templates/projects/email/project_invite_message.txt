@@ -1,13 +1,11 @@
-{% load i18n accounts_tags %}{% if invite_user %}{% trans "Dear" %} {% full_name invite_user %},{% else %}Hello from SPI's data management planning platform,{% endif %}
+{% load i18n accounts_tags %}
 
-{% full_name user as user_full_name %}{% blocktrans trimmed with project_title=project.title %}
-You are receiving this e-mail because user {{ user_full_name }} has given your e-mail address to register an account on {{ request.scheme }}://{{ request.get_host }}.
-{% endblocktrans %}
+You are receiving this e-mail because you have been invited to collaborate on the data management plan "test project" by {{ user_full_name }}.
 
-{% trans 'Click the link below to join the project:' %}
+Click the link below to join the data management plan:
 
     {{ invite_url }}
 
-{% trans 'You will need to log in to join the project.' %} {% if not invite_user %}{% trans "If you don't have an account yet, you will be redirected accordingly." %}{% endif %}
+You will need to log in to join the project. {% if not invite_user %}If you don't have an account yet, you will be redirected accordingly.{% endif %}
 
 For any queries or problems, please contact data@swisspolar.ch

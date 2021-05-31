@@ -1,7 +1,8 @@
-{% extends "account/email/base_message.txt" %}
-{% load account %}
-{% load i18n %}
+Thank you for registering to use the Swiss Polar Institute's data management plan platform,
 
-{% block content %}
-To confirm your registration, go to {{ activate_url }}
-{% endblock %}
+To confirm your registration, go to:
+
+    {{ activate_url }}
+
+For any queries or problems, please contact data@swisspolar.ch
+
