@@ -5,6 +5,9 @@ from . import BASE_DIR
 
 DEBUG = os.environ['DEBUG'] == '1'
 
+# https://docs.djangoproject.com/en/3.0/ref/settings/#secure-proxy-ssl-header
+# Make sure that nginx is doing what's described in the link above
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 SECRET_KEY = os.environ['SECRET_KEY']
 
