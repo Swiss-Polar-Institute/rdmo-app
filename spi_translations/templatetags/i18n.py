@@ -3,7 +3,7 @@ from django.templatetags.i18n import *
 register = Library()
 
 
-def spi_language(text):
+def translate_to_spi_language(text):
     text = text.replace('Catalog', 'Template')
     text = text.replace('catalog', 'template')
 
@@ -17,7 +17,7 @@ class SpiTranslateNode(TranslateNode):
     def render(self, context):
         result = super().render(context)
 
-        result = spi_language(result)
+        result = translate_to_spi_language(result)
         return result
 
 
@@ -25,7 +25,7 @@ class SpiBlockTranslateNode(BlockTranslateNode):
     def render(self, context, nested=False):
         result = super().render(context, nested)
 
-        result = spi_language(result)
+        result = translate_to_spi_language(result)
         return result
 
 
