@@ -25,6 +25,10 @@ Language code and time zone
 LANGUAGE_CODE = 'en-CH'
 TIME_ZONE = 'Europe/Berlin'
 
+LANGUAGES = (
+    ('en', 'English'),
+)
+
 '''
 The database connection to be used, see also:
 http://rdmo.readthedocs.io/en/latest/configuration/databases.html
