@@ -40,15 +40,6 @@ def translate_to_spi_language(text):
     for original, destination in replacements.items():
         text = replace_if_in_text(text, original, destination)
 
-    # text = text.replace('Catalog', 'Template')
-    # text = text.replace('catalog', 'template')
-    #
-    # text = text.replace('project', 'data management plan')
-    # text = text.replace('Project', 'Data management plan')
-
-    if original_text != text:
-        print('Changed from:', original_text, 'To:', text)
-
     return text
 
 
