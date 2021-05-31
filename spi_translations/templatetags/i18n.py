@@ -90,16 +90,6 @@ def spi_do_get_current_language_bidi(parser, token):
     return do_get_current_language_bidi(parser, token)
 
 
-@register.tag("trans")
-def spi_do_translate(parser, token):
-    return do_translate(parser, token)
-
-
-@register.tag("blocktrans")
-def spi_do_block_translate(parser, token):
-    return do_block_translate(parser, token)
-
-
 @register.tag
 def spi_language(parser, token):
     return language(parser, token)
