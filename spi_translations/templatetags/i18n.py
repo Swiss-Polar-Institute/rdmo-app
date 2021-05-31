@@ -2,13 +2,52 @@ from django.templatetags.i18n import *
 
 register = Library()
 
+replacements = {'Catalog': 'Template',
+                'catalog': 'template',
+                'Project': 'Data management plan',
+                'project': 'data management plan'
+                }
+
+
+def replace_if_in_text(text, original, destination):
+    """
+    Sometimes it can be in {$ .... $} angular. We do not want to replace
+    it on this case.
+    """
+    position = 0
+    while True:
+        position = text.find(original, position)
+
+        if position == -1:
+            return text
+
+        left_curly_dollar = text.find('{$', position)
+        right_curly_dollar = text.rfind('$}', position)
+
+        if left_curly_dollar < position < right_curly_dollar:
+            # Advance without changing it
+            position = right_curly_dollar
+        else:
+            text = text[0:position] + text[position:].replace(original, destination)
+
 
 def translate_to_spi_language(text):
-    text = text.replace('Catalog', 'Template')
-    text = text.replace('catalog', 'template')
+    if text == 'The project is funded by the German Research Foundation.':
+        return text
 
-    text = text.replace('project', 'data management plan')
-    text = text.replace('Project', 'Data management plan')
+    original_text = text
+
+    for original, destination in replacements.items():
+        text = replace_if_in_text(text, original, destination)
+
+    # text = text.replace('Catalog', 'Template')
+    # text = text.replace('catalog', 'template')
+    #
+    # text = text.replace('project', 'data management plan')
+    # text = text.replace('Project', 'Data management plan')
+
+    if original_text != text:
+        print('Changed from:', original_text, 'To:', text)
 
     return text
 
