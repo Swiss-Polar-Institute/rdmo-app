@@ -12,7 +12,6 @@ do_not_replacements = ['Project RDMO', 'The project aims',
                        '?next=%2Fprojects%2Fjoin%2F']
 
 
-
 def find_to_left(string, value, initial_position):
     while initial_position >= 0:
         if string[initial_position:initial_position+len(value)] == value:
@@ -55,6 +54,7 @@ def replace_if_in_text(text, original, destination):
             position = right_curly_dollar
             continue
 
+        to_replace = True
         for do_not_replace in do_not_replacements:
             start_do_not_replace = text.find(do_not_replace)
 
@@ -65,9 +65,10 @@ def replace_if_in_text(text, original, destination):
 
             if start_do_not_replace <= position <= end_do_not_replace:
                 position = end_do_not_replace
-                continue
+                to_replace = False
 
-        text = text[0:position] + destination + text[position+len(destination):]
+        if to_replace:
+            text = text[0:position] + destination + text[position+len(original):]
 
 
 def translate_to_spi_language(text):
