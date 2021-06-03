@@ -8,6 +8,9 @@ replacements = {'Catalog': 'Template',
                 'project': 'data management plan'
                 }
 
+do_not_replacements = ['Project RDMO', 'The project aims',
+                       '?next=%2Fprojects%2Fjoin%2F']
+
 
 def replace_if_in_text(text, original, destination):
     """
@@ -21,14 +24,29 @@ def replace_if_in_text(text, original, destination):
         if position == -1:
             return text
 
+        # If what's going to be replaced is between the angular escaping:
+        # avoid replacing it
         left_curly_dollar = text.find('{$', position)
-        right_curly_dollar = text.rfind('$}', position)
+        right_curly_dollar = text.find('$}', position, left_curly_dollar + 1)
 
         if left_curly_dollar < position < right_curly_dollar:
             # Advance without changing it
             position = right_curly_dollar
-        else:
-            text = text[0:position] + text[position:].replace(original, destination)
+            continue
+
+        for do_not_replace in do_not_replacements:
+            start_do_not_replace = text.find(do_not_replace)
+
+            if start_do_not_replace == -1:
+                continue
+
+            end_do_not_replace = start_do_not_replace + len(do_not_replace)
+
+            if start_do_not_replace <= position <= end_do_not_replace:
+                position = end_do_not_replace
+                continue
+
+        text = text[0:position] + text[position:].replace(original, destination)
 
 
 def translate_to_spi_language(text):
