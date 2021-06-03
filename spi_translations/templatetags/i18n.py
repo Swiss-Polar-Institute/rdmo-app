@@ -27,7 +27,7 @@ def replace_if_in_text(text, original, destination):
         # If what's going to be replaced is between the angular escaping:
         # avoid replacing it
         left_curly_dollar = text.find('{$', position)
-        right_curly_dollar = text.find('$}', position, left_curly_dollar + 1)
+        right_curly_dollar = text.find('$}', left_curly_dollar+1)
 
         if left_curly_dollar < position < right_curly_dollar:
             # Advance without changing it
