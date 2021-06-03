@@ -21,6 +21,7 @@ services:
       - EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD}
       - ADMIN_1=${ADMIN_1}
       - ADMIN_2=${ADMIN_2}
+      - DEFAULT_URI_PREFIX=${DEFAULT_URI_PREFIX}
     volumes:
       - static_volume:/code/staticfiles
       - media:/code/media_root

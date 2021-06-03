@@ -289,6 +289,8 @@ Logging configuration
 #     }
 # }
 
+DEFAULT_URI_PREFIX=os.environ['DEFAULT_URI_PREFIX']
+
 # Replace "Project" by "Data management plan" in the _("") strings
 # (e.g. help texts)
 # Template replacement is done via templatetags/i18n.py project file
