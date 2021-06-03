@@ -12,6 +12,26 @@ do_not_replacements = ['Project RDMO', 'The project aims',
                        '?next=%2Fprojects%2Fjoin%2F']
 
 
+
+def find_to_left(string, value, initial_position):
+    while initial_position >= 0:
+        if string[initial_position:initial_position+len(value)] == value:
+            return initial_position
+
+        initial_position -= 1
+
+    return -1
+
+def find_to_right(string, value, initial_position):
+    while initial_position < len(string)-len(value):
+        if string[initial_position:initial_position+len(value)] == value:
+            return initial_position
+
+        initial_position += 1
+
+    return -1
+
+
 def replace_if_in_text(text, original, destination):
     """
     Sometimes it can be in {$ .... $} angular. We do not want to replace
@@ -26,10 +46,11 @@ def replace_if_in_text(text, original, destination):
 
         # If what's going to be replaced is between the angular escaping:
         # avoid replacing it
-        left_curly_dollar = text.find('{$', position)
-        right_curly_dollar = text.find('$}', left_curly_dollar+1)
+        left_curly_dollar = find_to_left(text, '{$', position)
+        right_curly_dollar = find_to_right(text, '$}', position)
 
-        if left_curly_dollar < position < right_curly_dollar:
+        if left_curly_dollar != -1 and right_curly_dollar != -1 and \
+                left_curly_dollar < position < right_curly_dollar:
             # Advance without changing it
             position = right_curly_dollar
             continue
@@ -46,7 +67,7 @@ def replace_if_in_text(text, original, destination):
                 position = end_do_not_replace
                 continue
 
-        text = text[0:position] + text[position:].replace(original, destination)
+        text = text[0:position] + destination + text[position+len(destination):]
 
 
 def translate_to_spi_language(text):
