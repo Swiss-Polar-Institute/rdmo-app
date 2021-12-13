@@ -1,0 +1,22 @@
+{% load i18n %}
+
+<h2>{% trans 'Overview' %}</h2>
+
+{% include 'projects/project_questions_overview.html' %}
+
+
+{% comment %}
+SPI: the progress is not working as expected in our case
+     (for the clusters?)
+
+     For now we hide it.
+
+<h2>{% trans 'Progress' %}</h2>
+
+{% include 'projects/project_questions_progress.html' %}
+{% include 'projects/project_questions_buttons.html' with sidebar=True %}
+{% endcomment %}
+
+<h2>{% trans 'Navigation' %}</h2>
+
+{% include 'projects/project_questions_navigation.html' %}
