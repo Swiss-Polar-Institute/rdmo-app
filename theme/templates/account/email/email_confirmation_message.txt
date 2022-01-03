@@ -4,5 +4,5 @@ To confirm your registration, go to:
 
     {{ activate_url }}
 
-For any queries or problems, please contact data@swisspolar.ch
+For any queries or problems, please contact grants@swisspolar.ch
 

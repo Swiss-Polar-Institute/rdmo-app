@@ -8,4 +8,4 @@ Click the link below to join the data management plan:
 
 You will need to log in to join the project. {% if not invite_user %}If you don't have an account yet, you will be redirected accordingly.{% endif %}
 
-For any queries or problems, please contact data@swisspolar.ch
+For any queries or problems, please contact grants@swisspolar.ch
