@@ -99,14 +99,14 @@ class SpiBlockTranslateNode(BlockTranslateNode):
         return result
 
 
-@register.tag("trans")
+@register.tag("translate")
 def spi_do_translate(parser, token):
     translated = do_translate(parser, token)
     return SpiTranslateNode(translated.filter_expression, translated.noop,
                             translated.asvar, translated.message_context)
 
 
-@register.tag("blocktrans")
+@register.tag("blocktranslate")
 def spi_do_block_translate(parser, token):
     translated = do_block_translate(parser, token)
     return SpiBlockTranslateNode(translated.extra_context, translated.singular,
