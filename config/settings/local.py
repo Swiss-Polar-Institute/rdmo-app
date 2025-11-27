@@ -90,7 +90,7 @@ while f'ADMIN_{i}' in os.environ:
     i += 1
 
 # When uploading our domain we have many attributes
-DATA_UPLOAD_MAX_NUMBER_FIELDS=10000
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 10000
 
 '''
 Allauth configuration, see also:
@@ -187,6 +187,7 @@ Export Formats
 '''
 
 from django.utils.translation import ugettext_lazy as _
+
 EXPORT_FORMATS = (
     ('pdf', 'PDF'),
     ('rtf', 'Rich Text Format'),
@@ -289,7 +290,7 @@ Logging configuration
 #     }
 # }
 
-DEFAULT_URI_PREFIX=os.environ['DEFAULT_URI_PREFIX']
+DEFAULT_URI_PREFIX = os.environ['DEFAULT_URI_PREFIX']
 
 # Replace "Project" by "Data management plan" in the _("") strings
 # (e.g. help texts)
@@ -297,3 +298,9 @@ DEFAULT_URI_PREFIX=os.environ['DEFAULT_URI_PREFIX']
 import django.utils.translation as translation
 
 translation.ugettext_lazy = translate_to_spi_language
+PROJECT_EXPORTS = (
+    ('xml', 'RDMO XML', 'rdmo.projects.exports.RDMOXMLExport'),
+    ('csvcomma', 'CSV (comma separated)', 'spi_translations.exports.csvexports.SPICSVCommaExport'),
+    ('csvsemicolon', 'CSV semicolon separated', 'spi_translations.exports.csvexports.SPICSVSemicolonExport'),
+)
+
